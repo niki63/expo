@@ -9,9 +9,7 @@ import expo.modules.filesystem.slashifyFilePath
 import expo.modules.interfaces.filesystem.Permission
 import expo.modules.kotlin.apifeatures.EitherType
 import expo.modules.kotlin.typedarray.TypedArray
-import java.io.File
 import java.io.FileOutputStream
-import java.net.URI
 import java.nio.file.attribute.BasicFileAttributes
 import java.security.MessageDigest
 import kotlin.io.path.Path
@@ -45,7 +43,7 @@ class FileSystemFile(uri: Uri) : FileSystemPath(uri) {
     validateType()
     validatePermission(Permission.WRITE)
     validateCanCreate(options)
-    if(isContentURI) {
+    if (isContentURI) {
       throw UnableToCreateException("create function does not work with SAF Uris, use `createDirectory` and `createFile` instead")
     } else {
       if (options.overwrite && exists) {
